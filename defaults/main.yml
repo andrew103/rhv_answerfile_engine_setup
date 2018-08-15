@@ -1,1 +1,11 @@
 # defaults file for rhv_answerfile_engine_setup
+rhv_answerfile_engine_setup_package: rhevm
+rhv_answerfile_engine_setup_become_user: root
+
+rhv_answerfile_engine_setup_use_defaults: true
+
+# rhv_answerfile_engine_setup_template_path: engine-setup-template.j2
+
+# rhv_answerfile_engine_setup_host_hostname: "{{ omit }}"
+# rhv_answerfile_engine_setup_host_domain: "{{ omit }}"
+rhv_answerfile_engine_setup_engine_password: d1r2o3w4s5s6a7p8
