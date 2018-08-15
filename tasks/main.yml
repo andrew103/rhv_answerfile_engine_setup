@@ -21,27 +21,8 @@
     package:
       name: "{{ rhv_answerfile_engine_setup_package }}"
       state: present
-
-  - name: Render answerfile template and store on remote
-    template:
-      src: "{{ rhv_answerfile_engine_setup_template_path }}"
-      dest: /root/answerfile.txt
-    when: rhv_answerfile_engine_setup_template_path is defined and
-          not rhv_answerfile_engine_setup_use_defaults
-
-  - name: Use answerfile for engine-setup
-    command: engine-setup --config-append=/root/answerfile.txt
-    when: rhv_answerfile_engine_setup_template_path is defined and
-          not rhv_answerfile_engine_setup_use_defaults
-
-  - name: Use default values for engine-setup
-    expect:
-      command: engine-setup --accept-defaults
-      responses:
-        'Engine admin password': "{{ rhv_answerfile_engine_setup_engine_password }}"
-        'Confirm engine admin password': "{{ rhv_answerfile_engine_setup_engine_password }}"
-      timeout: 180
-    when: rhv_answerfile_engine_setup_template_path is not defined and
-          rhv_answerfile_engine_setup_use_defaults
+    notify:
+      - Render answerfile template
+      - Use default values
   become: true
   become_user: "{{ rhv_answerfile_engine_setup_become_user }}"

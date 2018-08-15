@@ -56,7 +56,7 @@ With an answerfile jinja2 template
   roles:
     - role: oasis-roles.rhv_answerfile_engine_setup
       rhv_answerfile_engine_setup_use_defaults: false
-      rhv_answerfile_engine_setup_template_path: engine-setup-template.j2  # This is a default template provided with the role. You may also specify a path to your own custom template
+      rhv_answerfile_engine_setup_template_path: engine-setup-template  # This is a default template provided with the role. You may also specify a path to your own custom template
       rhv_answerfile_engine_setup_host_domain: host.domain.com
       rhv_answerfile_engine_setup_host_hostname: host.hostname.com
       rhv_answerfile_engine_setup_engine_password: 123secure_password456

@@ -1,1 +1,23 @@
 # Handlers for rhv_answerfile_engine_setup
+- block:
+  - name: Render answerfile template
+    template:
+      src: "{{ rhv_answerfile_engine_setup_template_path }}"
+      dest: /root/answerfile.txt
+    notify:
+      - Use answerfile
+    when: not rhv_answerfile_engine_setup_use_defaults
+
+  - name: Use answerfile
+    command: engine-setup --config-append=/root/answerfile.txt
+
+  - name: Use default values
+    expect:
+      command: engine-setup --accept-defaults
+      responses:
+        'password': "{{ rhv_answerfile_engine_setup_engine_password }}"
+        'Confirm': "{{ rhv_answerfile_engine_setup_engine_password }}"
+      timeout: 180
+    when: rhv_answerfile_engine_setup_use_defaults
+  become: true
+  become_user: "{{ rhv_answerfile_engine_setup_become_user }}"

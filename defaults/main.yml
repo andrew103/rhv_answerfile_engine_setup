@@ -4,7 +4,7 @@ rhv_answerfile_engine_setup_become_user: root
 
 rhv_answerfile_engine_setup_use_defaults: true
 
-# rhv_answerfile_engine_setup_template_path: engine-setup-template.j2
+# rhv_answerfile_engine_setup_template_path: engine-setup-template
 
 # rhv_answerfile_engine_setup_host_hostname: "{{ omit }}"
 # rhv_answerfile_engine_setup_host_domain: "{{ omit }}"
