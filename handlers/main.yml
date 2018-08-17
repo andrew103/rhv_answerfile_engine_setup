@@ -1,7 +1,9 @@
 # Handlers for rhv_answerfile_engine_setup
 - block:
   - name: Use answerfile
-    command: engine-setup --config-append=/root/answerfile.txt --accept-defaults
+    command: >
+      engine-setup --config-append=/root/answerfile.txt
+      --accept-defaults
 
   - name: Use default values
     expect:
