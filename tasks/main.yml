@@ -22,7 +22,14 @@
       name: "{{ rhv_answerfile_engine_setup_package }}"
       state: present
     notify:
-      - Render answerfile template
       - Use default values
+
+  - name: Render answerfile template
+    template:
+      src: "{{ rhv_answerfile_engine_setup_template_path }}"
+      dest: /root/answerfile.txt
+    notify:
+      - Use answerfile
+    when: not rhv_answerfile_engine_setup_use_defaults
   become: true
   become_user: "{{ rhv_answerfile_engine_setup_become_user }}"

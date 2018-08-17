@@ -1,15 +1,7 @@
 # Handlers for rhv_answerfile_engine_setup
 - block:
-  - name: Render answerfile template
-    template:
-      src: "{{ rhv_answerfile_engine_setup_template_path }}"
-      dest: /root/answerfile.txt
-    notify:
-      - Use answerfile
-    when: not rhv_answerfile_engine_setup_use_defaults
-
   - name: Use answerfile
-    command: engine-setup --config-append=/root/answerfile.txt
+    command: engine-setup --config-append=/root/answerfile.txt --accept-defaults
 
   - name: Use default values
     expect:
