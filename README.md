@@ -8,7 +8,7 @@ Install Red Hat Virtualization engine and configure it using an answerfile
 Requirements
 ------------
 
-Ansible 2.5 or higher
+Ansible 2.4 or higher
 
 Red Hat Enterprise Linux 7 or equivalent
 
@@ -66,9 +66,6 @@ With [rhsm](https://galaxy.ansible.com/oasis-roles/rhsm) from Ansible Galaxy
 ```yaml
 - hosts: rhv_answerfile_engine_setup-servers
   roles:
-    - role: oasis-roles.rhv_answerfile_engine_setup
-      rhv_answerfile_engine_setup_use_defaults: true
-      rhv_answerfile_engine_setup_engine_password: 123secure_password456
     - role: oasis-roles.rhsm
       rhsm_username: user@company.com
       rhsm_password: password
@@ -84,6 +81,9 @@ With [rhsm](https://galaxy.ansible.com/oasis-roles/rhsm) from Ansible Galaxy
           - rhel-7-server-rhv-4.2-manager-rpms
           - rhel-7-server-rhv-4-beta-rpms
           - rhel-7-server-ansible-2.5-rpms
+    - role: oasis-roles.rhv_answerfile_engine_setup
+      rhv_answerfile_engine_setup_use_defaults: true
+      rhv_answerfile_engine_setup_engine_password: 123secure_password456
 ```
 
 **Note: The repositories listed in the above example are all required to run this role**

@@ -8,7 +8,7 @@
       - ../files/python-ptyprocess-0.5.1-2.mga7.noarch.rpm
       - ../files/python-pexpect-4.0.1-4.mga7.noarch.rpm
 
-  - name: Install dependencies for ansible expect module
+  - name: Install packages
     package:
       name: "{{ packages }}"
       state: present
@@ -16,11 +16,7 @@
       packages:
         - /root/python-ptyprocess-0.5.1-2.mga7.noarch.rpm
         - /root/python-pexpect-4.0.1-4.mga7.noarch.rpm
-
-  - name: Install RHEVM
-    package:
-      name: "{{ rhv_answerfile_engine_setup_package }}"
-      state: present
+        - "{{ rhv_answerfile_engine_setup_package }}"
     notify:
       - Use default values
 
